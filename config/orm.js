@@ -13,7 +13,13 @@ var orm = {
   admin: function(id, cb) {
     var queryString = "SELECT * FROM blogPost WHERE id = ?"
     var adminId = [id];
-    connection.query(queryString, adminId, cb);
+    // console.log(adminId);
+    connection.query(queryString, adminId, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   },
   create: function(table, post, title, cb) {
     var query = "INSERT INTO "+ table + " (post, title) VALUES (" + post + ", " + title + ");"

@@ -6,7 +6,7 @@ var blogs = {
     });
   },
   admin: function (id, cb) {
-    orm.admin({ id }, function (res) {
+    orm.admin(id, function (res) {
       cb(res);
     });
   },

@@ -12,10 +12,13 @@ router.get("/", function(req, res) {
   });
 });
 router.get("/admin/:id", function(req, res) {
-  blog.admin(req.params.id, function(err, data) {
-    if (err) throw err;
+  blog.admin(req.params.id, function(data) {
+    // if (err) throw err;
     console.log(data);
-    res.render("admin", data);
+    var postBody = {
+      post: data[0]
+    }
+    res.render("admin", postBody);
   });
 });
 
