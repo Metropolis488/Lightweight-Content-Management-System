@@ -22,11 +22,11 @@ router.get("/admin/:id", function(req, res) {
   });
 });
 
-
+  // updated delete req 11/14
 router.delete("/api/admin/:id", function(req, res){
   var deleted = req.params.id;
   blog.delete(deleted, function(result){
-    return result 
+    res.json(result);
   })
 })
 module.exports = router;

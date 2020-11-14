@@ -11,8 +11,9 @@ var blogs = {
     });
   },
 
-  delete: function (cb) {
-    orm.delete("blogPost", function (res) {
+  // updated delete req 11/14
+  delete: function (id, cb) {
+    orm.delete(id, function (res) {
       cb(res);
     });
   },
