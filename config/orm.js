@@ -8,22 +8,37 @@ var orm = {
         throw err;
       }
       cb(result);
+      console.log(result);
     });
   },
-  admin: function(id, cb) {
-    var queryString = "SELECT * FROM blogPost WHERE id = ?"
-    var adminId = [id];
-    // console.log(adminId);
-    connection.query(queryString, adminId, function(err, result) {
+  fetch: function(id, cb) {
+    var query = `SELECT * FROM blogPost WHERE id = ${id};`
+    connection.query(query, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    })
+  },
+  update: function(vals, cb) {
+    console.log(vals);
+    var title = vals[0];
+    var post = vals[1];
+    var auth = vals[2];
+    var abs = vals[3];
+    var upID = vals[4];
+    var query = `UPDATE blogPost SET title = "${title}", post = "${post}", author = "${auth}", abstract = "${abs}" WHERE id = "${upID}";`
+    console.log(query);
+    connection.query(query, function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
   },
-  create: function(table, post, title, cb) {
-    var query = "INSERT INTO "+ table + " (post, title) VALUES (" + post + ", " + title + ");"
-    console.log(query);
+  create: function(table, columns, values, cb) {
+    console.log(values);
+    var query = "INSERT INTO "+ table + " (" + columns.join(",") + ") VALUES ('"+ values.join("', '") + "');"
     connection.query(query, function(err, result) {
       if (err) throw err;
       cb(result);
@@ -32,7 +47,6 @@ var orm = {
 
   delete: function(id, cb) {
     var query = `DELETE FROM blogPost WHERE id=${id};`
-    console.log(query);
     connection.query(query, function(err, result) {
       if (err) throw err;
       cb(result);

@@ -5,14 +5,25 @@ var blogs = {
       cb(res);
     });
   },
-  admin: function (id, cb) {
-    orm.admin(id, function (res) {
+  fetch: function(id, cb) {
+    orm.fetch(id, function(res){
+      cb(res);
+    })
+  },
+  update: function (vals, cb) {
+    orm.update(vals, function (res) {
       cb(res);
     });
   },
 
-  delete: function (cb) {
-    orm.delete("blogPost", function (res) {
+  create: function(columns, vals, cb) {
+    orm.create("blogPost", columns, vals, function(res) {
+      cb(res);
+    })
+  },
+
+  delete: function (id, cb) {
+    orm.delete(id, function (res) {
       cb(res);
     });
   },
