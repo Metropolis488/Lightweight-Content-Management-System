@@ -1,7 +1,25 @@
+<button><a href="/admin">Admin Page</a></button>
 <ul>
   {{#each blogs}}
-    <li>
-  {{title}}
-</li>
+  
+  <button type="submit" data-id="{{this.id}}" class="goTo">{{this.id}}  {{this.title}}</button> <br>
+
   {{/each}}
 </ul>
+
+
+<script type="text/javascript">
+  $(".goTo").on("click", function(e) {
+    var id = $(this).data("id")
+
+    console.log(id)
+    
+    $.ajax("/article/" + id, {
+      type: "GET",
+    }).then(function() {      
+    })
+    location.href = "/article/" + id;
+  })
+
+
+</script>
