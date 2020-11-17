@@ -1,4 +1,15 @@
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+
 <button><a href="/admin">Admin Page</a></button>
+
 <ul>
   {{#each blogs}}
   
@@ -8,18 +19,7 @@
 </ul>
 
 
-<script type="text/javascript">
-  $(".goTo").on("click", function(e) {
-    var id = $(this).data("id")
+<div class="col-sm-2"></div>
+</div>
+</div>
 
-    console.log(id)
-    
-    $.ajax("/article/" + id, {
-      type: "GET",
-    }).then(function() {      
-    })
-    location.href = "/article/" + id;
-  })
-
-
-</script>
