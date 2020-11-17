@@ -12,9 +12,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/article/:id", function(req, res) {
-  console.log(req.body.id)
   blog.fetch(req.params.id, function(data) {
-    console.log(data);
     var postBody = {
       post: data[0]
     }
@@ -33,8 +31,6 @@ router.get("/admin", function(req, res) {
 
 router.get("/admin/:id", function(req, res) {
   blog.fetch(req.params.id, function(data) {
-    // if (err) throw err;
-    console.log(data);
     var postBody = {
       post: data[0]
     }
@@ -43,14 +39,12 @@ router.get("/admin/:id", function(req, res) {
 });
 
 router.post("/admin/api/new", function(req, res) {
-  // console.log("GOT HERE")
   blog.create(["title", "post", "author", "abstract"], [req.body.title, req.body.post, req.body.author, req.body.abstract], function(result) {
     res.json(result);
   })
 })
 
 router.post("/admin/api/updated", function(req, res) {
-  console.log("GOT HERE")
   blog.update([req.body.title, req.body.post, req.body.author, req.body.abstract, req.body.id], function(result) {
     res.json(result);
   })
@@ -58,7 +52,6 @@ router.post("/admin/api/updated", function(req, res) {
 
 router.delete("/admin/api/:id", function(req, res){
   var deleted = req.params.id;
-  console.log(deleted);
   blog.delete(deleted, function(result){
     res.json(result);
   })

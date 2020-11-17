@@ -1,37 +1,22 @@
 <h2>Edit Your Post</h2>
 
-<form id="newPost">
+<form id="updated">
   <p name="postID">{{post.id}}</p>  
   <label for="author">Author Name</label><br>
   <textarea type="text" name="author">{{post.author}}</textarea><br>
   <label for="title">Article Title</label><br>
   <textarea type="text" name="title">{{post.title}}</textarea><br>
   <label for="postBody">Article Body</label><br>
-  <textarea type="text" name="postBody">{{post.post}}</textarea><br> 
+  <div id="editor">{{{post.post}}}</div>
+  {{!-- <textarea type="text" name="postBody">{{post.post}}</textarea><br>  --}}
   <label for="abstract">Abstract</label><br>
   <textarea type="text" name="abstract">{{post.abstract}}</textarea><br> 
   <button type="submit">Submit</button>
 </form>
 
-<script type="text/javascript">
-  $("#newPost").on("submit", function(e) {
-    e.preventDefault();
-    var updatedPost = {
-      title: $("#newPost [name=title").val().trim(),
-      post: $("#newPost [name=postBody").val().trim(),      
-      author: $("#newPost [name=author").val().trim(),
-      abstract: $("#newPost [name=abstract").val().trim(),
-      id: $("#newPost [name=postID]").text()
-    };
-    console.log($("#newPost [name=postID]").text());
-    $.ajax("/admin/api/updated", {
-      type: "POST",
-      data: updatedPost
-    }).then(function() {
-      console.log("new post created");
-      location.reload();
-    })
-  })
-
-
-</script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script defer type="text/javascript">
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+  </script>

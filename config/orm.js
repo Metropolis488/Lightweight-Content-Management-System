@@ -8,7 +8,6 @@ var orm = {
         throw err;
       }
       cb(result);
-      console.log(result);
     });
   },
   fetch: function(id, cb) {
