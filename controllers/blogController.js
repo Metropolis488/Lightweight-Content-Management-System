@@ -7,26 +7,60 @@ router.get("/", function(req, res) {
     var hbsObject = {
       blogs: data
     };
-    // console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
+
+router.get("/article/:id", function(req, res) {
+  console.log(req.body.id)
+  blog.fetch(req.params.id, function(data) {
+    console.log(data);
+    var postBody = {
+      post: data[0]
+    }
+    res.render("article", postBody);
+  });
+});
+
+router.get("/admin", function(req, res) {
+  blog.all(function(data) {
+    var hbsObject = {
+      blogs: data
+    };
+    res.render("admin", hbsObject);
+  });
+});
+
 router.get("/admin/:id", function(req, res) {
-  blog.admin(req.params.id, function(data) {
+  blog.fetch(req.params.id, function(data) {
     // if (err) throw err;
     console.log(data);
     var postBody = {
       post: data[0]
     }
-    res.render("admin", postBody);
+    res.render("update", postBody);
   });
 });
 
+router.post("/admin/api/new", function(req, res) {
+  // console.log("GOT HERE")
+  blog.create(["title", "post", "author", "abstract"], [req.body.title, req.body.post, req.body.author, req.body.abstract], function(result) {
+    res.json(result);
+  })
+})
 
-router.delete("/api/admin/:id", function(req, res){
+router.post("/admin/api/updated", function(req, res) {
+  console.log("GOT HERE")
+  blog.update([req.body.title, req.body.post, req.body.author, req.body.abstract, req.body.id], function(result) {
+    res.json(result);
+  })
+})
+
+router.delete("/admin/api/:id", function(req, res){
   var deleted = req.params.id;
+  console.log(deleted);
   blog.delete(deleted, function(result){
-    return result 
+    res.json(result);
   })
 })
 module.exports = router;

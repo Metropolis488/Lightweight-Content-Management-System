@@ -1,3 +1,4 @@
+
 <div class="jumbotron text-center">
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p>
@@ -11,12 +12,14 @@
 
 <ul>
   {{#each blogs}}
-    <li>
-  {{title}}
-</li>
+  
+  <button type="submit" data-id="{{this.id}}" class="goTo">{{this.id}}  {{this.title}}</button> <br>
+
   {{/each}}
 </ul>
+
 
 <div class="col-sm-2"></div>
 </div>
 </div>
+
