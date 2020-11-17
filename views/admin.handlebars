@@ -16,48 +16,18 @@
   <label for="title">Article Title</label><br>
   <textarea type="text" name="title"></textarea><br>
   <label for="postBody">Article Body</label><br>
-  <textarea type="text" name="postBody"></textarea><br> 
+  {{!-- <textarea type="text" name="postBody"></textarea><br>  --}}
+  <div id="editor"></div>
   <label for="abstract">Abstract</label><br>
   <textarea type="text" name="abstract"></textarea><br> 
   <button type="submit">Submit</button>
 </form>
 
-<script type="text/javascript">
-  $("#newPost").on("submit", function(e) {
-    e.preventDefault();
-    var newArticle = {
-      title: $("#newPost [name=title").val().trim(),
-      post: $("#newPost [name=postBody").val().trim(),      
-      author: $("#newPost [name=author").val().trim(),
-      abstract: $("#newPost [name=abstract").val().trim(),      
-    };
-    $.ajax("/admin/api/new", {
-      type: "POST",
-      data: newArticle
-    }).then(function() {
-      console.log("new post created");
-      location.reload();
-    })
-  })
 
-  $(".delete").on("click", function(event) {
-      var id = $(this).data("id");
-      // Send the DELETE request.
-      $.ajax("admin/api/" + id, {
-        type: "DELETE"
-      }).then(function() {
-          console.log("deleted Blogpost", id);
-          location.reload();
-        }
-      );
-    });
 
-    $(".update").on("click", function() {
-      var id = $(this).data("id");
-      $.ajax("/admin/" + id, {
-        type: "GET"
-      }).then(function() {
-      })
-      location.href = "/admin/" + id;
-    })
-</script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script defer type="text/javascript">
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+  </script>
