@@ -14,19 +14,17 @@
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-      <div class="card-deck">
+      
         {{#each blogs}}
-        <div class="card bg-primary">
-          <div class="card-body text-center">
-  <button type="submit" data-id="{{this.id}}" class="goTo">{{this.id}}  {{this.title}}</button> <br>
+        <div class="card w-25 p-3 bg-primary">
+          <div class="card-body" type="submit" data-id="{{this.id}}" class="goTo">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.abstract}}</p>
+            <p class="card-text">{{this.author}}</p>
+            <button type="submit" data-id="{{this.id}}" class="goTo">Read</button> <br>
           </div>
         </div>
         {{/each}}
-      </div>
-  
-
-
-
 
 </div>
 <div class="col-sm-2"></div>
