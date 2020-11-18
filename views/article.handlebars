@@ -1,8 +1,27 @@
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top justify-content-center">
+  <ul class="navbar-nav">
+      <li class="nav-item">
+      <a class="nav-link" href="/">Home Page</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+    <div class="col-sm-8">
 <h1>{{post.title}}</h1>
 
 <h3>{{post.author}}</h3>
-<p>{{post.abstract}}</p>
+{{!-- <p>{{post.abstract}}</p> --}}
 <div>
     {{{post.post}}}
 </div>
 
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
