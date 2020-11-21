@@ -35,6 +35,10 @@ You can "git clone" this application onto your local machine, be sure to change 
 * WYSIWYG API: Quill
 
 ## Deployed Application:
+
+https://intense-cliffs-20728.herokuapp.com/
+
+
 <img width="1792" alt="Screen Shot 2020-11-20 at 6 06 29 PM" src="https://user-images.githubusercontent.com/68358265/99858312-41bf3380-2b5b-11eb-843f-eff518ad00b6.png">
 
 <img width="1792" alt="Screen Shot 2020-11-20 at 6 06 48 PM" src="https://user-images.githubusercontent.com/68358265/99858363-674c3d00-2b5b-11eb-9741-9f819d225243.png">
