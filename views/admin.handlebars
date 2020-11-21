@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+<a href="/"><button>Home</button></a>
+
+<h2>Create or Delete Posts</h2>
+
+<ul>
+  {{#each blogs}}
+  <li>
+    {{this.id}}. {{this.title}}
+    <button type="submit" data-id="{{this.id}}" class="delete">Delete</button>
+    <button type="submit" data-id="{{this.id}}" class="update">Update</button>
+  </li>
+  {{/each}}
+</ul>
+
+<form id="newPost">
+  <label for="author">Author Name</label><br>
+  <textarea type="text" name="author"></textarea><br>
+  <label for="title">Article Title</label><br>
+  <textarea type="text" name="title"></textarea><br>
+  <label for="postBody">Article Body</label><br>
+  {{!-- <textarea type="text" name="postBody"></textarea><br>  --}}
+  <div id="editor"></div>
+  <label for="abstract">Abstract</label><br>
+  <textarea type="text" name="abstract"></textarea><br> 
+  <button type="submit">Submit</button>
+</form>
+
+</div>
+</div>
+
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script defer type="text/javascript">
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+  </script>
